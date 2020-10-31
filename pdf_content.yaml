@@ -1,0 +1,240 @@
+---
+# pdf width=210
+# pdf height=297
+
+
+content_template: &text_cell_template
+  align: ''
+  h: 0 # height of the cell
+  w: 180 # width of the cell
+  font_size: 10
+  style: ''
+  border: 0
+  fill_id: null
+  x: 25
+
+form_template: &form_template
+  align: ''
+  font_size: 10
+  style: ''
+  border: 0
+  fill_id: null
+  x: 35
+  h: 5
+  w: 160
+
+case_template: &case_template
+  x: 25
+  border: 1
+  fill_id: null
+  h: 6
+  w: 6
+  style: ''
+  font_size: 12
+  text: ''
+  align: ''
+
+
+
+text_content:
+- << : *text_cell_template
+  x: 15 # Vertical position of the cell (0 => Left edge of the page)
+  y: 17 # Vertical position of the cell (0 => Top of the page)
+  font_size: 16
+  style: B # Bold
+  text: ATTESTATION DE DÉPLACEMENT DÉROGATOIRE
+  align: 'C'
+
+- << : *text_cell_template
+  w: 160
+  x: 25
+  y: 22
+  h: 5
+  align: 'C'
+  text: >
+    En application du décret n°2020-1310 du 29 octobre 2020 prescrivant les mesures
+    générales nécessaires pour faire face à l'épidémie de Covid19 dans le cadre de
+    l'état d'urgence sanitaire
+
+- << : *text_cell_template
+  y: 35
+  h: 5
+  text: >
+    Je soussigné(e),
+
+- << : *text_cell_template
+  y: 43
+  h: 5
+  fill_id: name
+  text: >
+    Mme/M. : <TEXT>
+
+- << : *text_cell_template
+  y: 51
+  h: 5
+  fill_id: birthday
+  text: >
+    Né(e) le : <TEXT>
+
+- << : *text_cell_template
+  y: 51
+  h: 5
+  x: 100
+  fill_id: place_of_birth
+  text: >
+    à : <TEXT>
+
+- << : *text_cell_template
+  y: 59
+  h: 5
+  fill_id: address
+  text: >
+    Demeurant : <TEXT>
+
+- << : *text_cell_template
+  y: 67
+  h: 5
+  text: >
+    certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé
+    par le décretn°2020-1310 du 29 octobre 2020 prescrivant les mesures générales
+    nécessaires pour faire face àl'épidémie de Covid19 dans le cadre de l'état d'urgence
+    sanitaire(1) :
+
+- << : *case_template
+  y: 85
+
+- << : *form_template
+  y: 85
+  text: >
+    Déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle ou
+    un établissement d'enseignement ou de formation, déplacements professionnels ne pouvant
+    être différés(2), déplacements pour un concours ou un examen.
+
+- << : *case_template
+  y: 105
+  text: x
+
+- << : *form_template
+  y: 105
+  text: >
+    Déplacements  pour  effectuer  des  achats  de  fournitures  nécessaires  à  l'activité professionnelle,
+    des  achats  de  première  nécessité(3) dans  des  établissements  dont  les activités demeurent
+    autorisées, le retrait de commande et les livraisons à domicile.
+
+- << : *case_template
+  y: 125
+
+- << : *form_template
+  y: 125
+  text: >
+    Consultations, examens et  soins ne   pouvant  être  assurés  à  distance  et l'achat  de
+    médicaments.
+
+- << : *case_template
+  y: 140
+
+- << : *form_template
+  y: 140
+  text: >
+    Déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables et précaires ou la garde d'enfants.
+
+- << : *case_template
+  y: 155
+
+- << : *form_template
+  y: 155
+  text: >
+    Déplacement des personnes en situation de handicap et leur accompagnant.
+
+
+- << : *case_template
+  y: 170
+  text: x
+
+- << : *form_template
+  y: 170
+  text: >
+    Déplacements brefs, dans la limite d'une heure quotidienne et dans un rayon maximal d'un
+    kilomètre  autour  du  domicile,  liés  soit  à  l'activité  physique  individuelle  des
+    personnes, à l'exclusion de toute pratique sportive collective et de toute proximité avec
+    d'autres personnes, soit à la promenade avec les seules personnes regroupées dans un
+    même domicile, soit aux besoins des animaux de compagnie.
+
+- << : *case_template
+  y: 200
+
+- << : *form_template
+  y: 200
+  text: >
+    Convocation judiciaire ou administrative et pour se rendre dans un service public
+
+- << : *case_template
+  y: 215
+
+- << : *form_template
+  y: 215
+  text: >
+    Participation à des missions d'intérêt général sur demande de l'autorité administrative
+
+- << : *case_template
+  y: 230
+
+- << : *form_template
+  y: 230
+  text: >
+    Déplacement  pour  chercher  les  enfants  à  l'école  et  à  l'occasion  de  leurs  activités périscolaires
+
+- << : *text_cell_template
+  y: 245
+  fill_id: sign_place
+  text: >
+    Fait à : <TEXT>
+
+- << : *text_cell_template
+  y: 250
+  fill_id: sign_date
+  text: >
+    Le : <TEXT>
+
+- << : *text_cell_template
+  y: 250
+  x: 100
+  fill_id: sigh_hour
+  text: >
+    à : <TEXT>
+
+- << : *text_cell_template
+  y: 255
+  text: >
+    (Date et heure de début de sortie à mentionner obligatoirement)
+
+- << : *text_cell_template
+  y: 260
+  text: >
+    Signature:
+
+- << : *text_cell_template
+  y: 270
+  font_size: 6
+  h: 2.5
+  text: >
+    (1): Les personnes souhaitant bénéficier de l'une de ces exceptions doivent se munir s'il
+    y a lieu, lors de leurs déplacements hors de leur domicile, d'un document leur permettant
+    de justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions.
+
+- << : *text_cell_template
+  y: 277
+  font_size: 6
+  h: 2
+  text: >
+    (2): A utiliser par les travailleurs non-salariés, lorsqu'ils ne peuvent disposer d'un justificatif
+    de déplacement établi par leur employeur
+
+- << : *text_cell_template
+  y: 280
+  font_size: 6
+  h: 2
+  text: >
+    (3): Y compris les acquisitions à titre gratuit (distribution de denrées alimentaires...)
+    et les déplacements liés à la perception de prestations sociales et au retrait d'espèces.
+

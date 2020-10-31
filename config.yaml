@@ -1,0 +1,27 @@
+---
+
+server_config:
+  # default is 5050
+  port: 5000
+  # default is 0.0.0.0
+  host: 0.0.0.0
+
+mail_config:
+  # MANDATORY email address used to send email
+  sender_email: your_sending_email@domain.com
+  # MANDATORY The password link to this this email
+  password: YourPassword
+  default_receiver: your_email@domain.com
+  default_subject: attestation_covid
+  default_body: attestation covid
+  default_attachment_name:  attestation.pdf
+
+# Will be used if not precised when calling the endpoint /get-attestation
+# Or if you use raspberry pin to trigger the workflow
+pdf_default_value:
+  firstname: John
+  lastname: Doe
+  address: 1 avenue des champs-élysées, 75015, Paris
+  birth_date: 01/01/1970
+  place_of_birth: le chesnay
+  sign_place: Paris
