@@ -2,7 +2,7 @@
 
 server_config:
   # default is 5050
-  port: 5000
+  port: 5050
   # default is 0.0.0.0
   host: 0.0.0.0
 
@@ -11,6 +11,7 @@ mail_config:
   sender_email: your_sending_email@domain.com
   # MANDATORY The password link to this this email
   password: YourPassword
+  # email receiving the attestation if not precised in the http call or if using raspberry pin
   default_receiver: your_email@domain.com
   default_subject: attestation_covid
   default_body: attestation covid

@@ -5,16 +5,17 @@ from datetime import date, datetime
 
 from config import CovidConfig, ServerConfig
 from services.mail import MailService
-from services.pdf_services import generate_covid_pdf
+from services.pdf_services import PdfService
 
 logging.basicConfig(level=logging.INFO)
 
 
 class AttestationGeneratorServer(object):
 
-    def __init__(self, mail: MailService, conf: ServerConfig):
+    def __init__(self, mail: MailService, server_conf: ServerConfig, pdf_service: PdfService):
         self.mail = mail
         self.app = Flask(__name__)
+        self.pdf_service = pdfService
 
         @self.app.route("/get-attestation")
         def get_attest():
@@ -27,17 +28,19 @@ class AttestationGeneratorServer(object):
             receiver_email = request.args.get("receiver_email")
             sign_date = date.today().strftime("%d/%m/%y")
             sign_time = datetime.now().strftime("%H:%M:%S")
-            pdf = generate_covid_pdf(firstname, lastname, birthdate, place_birth, address, sign_place, sign_date,
-                                     sign_time)
+            pdf = self.pdf_service.generate_covid_pdf(sign_date=sign_date, sign_hour=sign_time, firstname=firstname,
+                                                      lastname=lastname, place_birth=place_birth, sign_place=sign_place,
+                                                      address=address, birthdate=birthdate)
             self.mail.send_mail(attachment=pdf, recipient=receiver_email)
-            return "hello world"
+            return "done"
 
-        self.app.run(host=conf.host, port=conf.port)
+        self.app.run(host=server_conf.host, port=server_conf.port)
 
 
 if __name__ == '__main__':
     conf = CovidConfig()
     mailService = MailService(conf.get_mail_conf())
-    attestation = AttestationGeneratorServer(mailService, conf.get_server_conf())
+    pdfService = PdfService(conf.get_pdf_config())
+    attestation = AttestationGeneratorServer(mailService, conf.get_server_conf(), pdfService)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

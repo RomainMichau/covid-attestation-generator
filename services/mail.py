@@ -8,7 +8,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from config import MailConfig
-from services.pdf_services import generate_covid_pdf
 
 port = 465  # For SSL
 

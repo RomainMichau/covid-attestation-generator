@@ -17,7 +17,7 @@ class MailConfig:
         self.default_attachment_name = data.get("default_attachment_name", "attestation.pdf")
 
 
-class PdfDefaultValue:
+class PdfConfig:
     def __init__(self, data: dict):
         self.default_firstname = data.get("firstname")
         self.default_lastname = data.get("lastname")
@@ -41,7 +41,7 @@ class CovidConfig:
             data = yaml.safe_load(yaml_file)
             self.__server_config = ServerConfig(data["server_config"])
             self.__mail_config = MailConfig(data["mail_config"])
-            self.__pdf_default_value = PdfDefaultValue(data["pdf_default_value"])
+            self.__pdf_config = PdfConfig(data["pdf_default_value"])
 
     def get_mail_conf(self) -> MailConfig:
         return self.__mail_config
@@ -49,12 +49,10 @@ class CovidConfig:
     def get_server_conf(self) -> ServerConfig:
         return self.__server_config
 
-    def get_pdf_default_value(self) -> PdfDefaultValue:
-        return self.__pdf_default_value
+    def get_pdf_config(self) -> PdfConfig:
+        return self.__pdf_config
 
 
 class MissingConfException(Exception):
     def __init__(self, field_name: str):
         super().__init__(f"{field_name} must be defined in config.yaml")
-
-

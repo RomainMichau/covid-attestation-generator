@@ -1,24 +1,35 @@
 from fpdf import FPDF  # fpdf class
 import yaml
 
+from config import PdfConfig
 
-def generate_covid_pdf(firstname,
-                       lastname,
-                       birthdate,
-                       place_birth,
-                       address,
-                       sign_place,
-                       sign_date,
-                       sign_hour):
-    field_data = {"name": f"{firstname} {lastname}",
-                  "birthday": birthdate,
-                  "place_of_birth": place_birth,
-                  "address":  address,
-                  "sign_place": sign_place,
-                  "sign_date": sign_date,
-                  "sigh_hour": sign_hour}
-    pdf = PDF(field_data)
-    return pdf.output(f"covid_attestation.pdf", 'S')
+
+class PdfService:
+
+    def __init__(self, conf: PdfConfig):
+        self.conf = conf
+
+    def generate_covid_pdf(self,
+                           sign_date,
+                           sign_hour,
+                           firstname=None,
+                           lastname=None,
+                           address=None,
+                           birthdate=None,
+                           place_birth=None,
+                           sign_place=None) -> str:
+        name = self.conf.default_firstname + " " + self.conf.default_lastname
+        if firstname is not None and lastname is not None:
+            name = firstname + " " + lastname
+        field_data = {"name": name,
+                      "birthday": birthdate or self.conf.default_birth_date,
+                      "place_of_birth": place_birth or self.conf.default_place_of_birth,
+                      "address": address or self.conf.default_address,
+                      "sign_place": sign_place or self.conf.default_sign_place,
+                      "sign_date": sign_date,
+                      "sigh_hour": sign_hour}
+        pdf = PDF(field_data)
+        return pdf.output(f"covid_attestation.pdf", 'S')
 
 
 class PDF(FPDF):
@@ -55,6 +66,3 @@ class TextContent:
         if data[self.fill_id] is None:
             print(f"{self.fill_id} is missing")
         return self.__text.replace("<TEXT>", data[self.fill_id])
-
-
-res = generate_covid_pdf("romain", "michau", "31/01/1996", "Neuilly", "1 rue du general foy", "paris", "31/01/1655", "145")
