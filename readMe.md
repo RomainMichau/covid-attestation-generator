@@ -12,7 +12,7 @@ Can be used through:
 ### Mail setup
 This app was mainly tested with gmail address
 
-1. Create email an gmail (better to not use your usual one)
+1. Create a gmail account (better to not use your usual one)
 2. Allow external systems to use this address: [here](https://myaccount.google.com/lesssecureapps)
  
 ## Installation
