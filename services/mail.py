@@ -1,6 +1,6 @@
-import os
 import smtplib
 import ssl
+import logging
 
 from email import encoders
 from email.mime.base import MIMEBase
@@ -52,3 +52,4 @@ class MailService:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=self.context) as server:
             server.login(self.sender_email, self.password)
             server.sendmail(self.sender_email, recipient, text)
+            logging.info(f"mail sent to {recipient}")
