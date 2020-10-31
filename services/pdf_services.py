@@ -38,7 +38,7 @@ class PDF(FPDF):
     def __init__(self, field_data):
         super().__init__(format='A4', unit='mm', orientation='P')
         self.set_auto_page_break(True)
-        page_content = os.path.join(ROOT_DIR, 'pdf_content.yaml')
+        page_content = os.path.join(ROOT_DIR, '../pdf_content.yaml')
         with open(page_content) as yaml_file:
             self.add_page()
             data = yaml.safe_load(yaml_file)
