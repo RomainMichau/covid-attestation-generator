@@ -1,7 +1,9 @@
 from fpdf import FPDF  # fpdf class
 import yaml
-
+import os
 from config import PdfConfig
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 class PdfService:
@@ -36,7 +38,8 @@ class PDF(FPDF):
     def __init__(self, field_data):
         super().__init__(format='A4', unit='mm', orientation='P')
         self.set_auto_page_break(True)
-        with open('pdf_content.yaml') as yaml_file:
+        page_content = os.path.join(ROOT_DIR, 'pdf_content.yaml')
+        with open(page_content) as yaml_file:
             self.add_page()
             data = yaml.safe_load(yaml_file)
             for text in data['text_content']:

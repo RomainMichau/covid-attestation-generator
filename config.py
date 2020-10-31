@@ -2,6 +2,8 @@ import yaml
 import os
 import logging
 
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 class MailConfig:
     def __init__(self, data: dict):
@@ -36,6 +38,7 @@ class ServerConfig:
 class CovidConfig:
     def __init__(self):
         conf_file = os.getenv("COVID_ATTEST_CONF_FILE", "config.yaml")
+        conf_file = os.path.join(ROOT_DIR, conf_file)
         logging.info(f'Reading config from file {conf_file}')
         with open(conf_file) as yaml_file:
             data = yaml.safe_load(yaml_file)
