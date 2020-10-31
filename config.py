@@ -2,6 +2,7 @@ import yaml
 import os
 import logging
 
+
 class MailConfig:
     def __init__(self, data: dict):
         if "sender_email" not in data.keys():
