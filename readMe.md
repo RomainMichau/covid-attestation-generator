@@ -2,7 +2,7 @@
 
 ## Description
 Generate and send by email a PDF attestation required by french gov to go out during confinement.
-(Example of generated attestation)[example.pdf]
+[Example of generated attestation](example.pdf)
 Can be used through:
 - http call
 - Raspberry pin (soon)
