@@ -19,7 +19,8 @@ class PdfService:
                            address=None,
                            birthdate=None,
                            place_birth=None,
-                           sign_place=None) -> str:
+                           sign_place=None,
+                           checked=None) -> str:
         name = self.conf.default_firstname + " " + self.conf.default_lastname
         if firstname is not None and lastname is not None:
             name = firstname + " " + lastname
@@ -29,7 +30,8 @@ class PdfService:
                       "address": address or self.conf.default_address,
                       "sign_place": sign_place or self.conf.default_sign_place,
                       "sign_date": sign_date,
-                      "sigh_hour": sign_hour}
+                      "sigh_hour": sign_hour,
+                      "checked": checked or self.conf.default_reasons}
         pdf = PDF(field_data)
         return pdf.output(f"covid_attestation.pdf", 'S')
 
@@ -56,16 +58,22 @@ class TextContent:
         self.y = data['y']
         self.w = data['w']
         self.h = data['h']
-        self.style = data['style']
         self.font_size = data['font_size']
-        self.__text = data['text']
-        self.align = data['align']
         self.border = data['border']
-        self.fill_id = data['fill_id']
+        # Optionals Param
+        self.align = data.get('align', '')
+        self.style = data.get('style', '')
+        self.fill_id = data.get('fill_id')
+        self.__text = data.get('text', '')
+        self.check_id = data.get('check_id')
 
     def get_text(self, data):
-        if self.fill_id is None:
+        if self.fill_id is None and self.check_id is None:
             return self.__text
-        if data[self.fill_id] is None:
+        if self.fill_id is not None and data[self.fill_id] is None:
             print(f"{self.fill_id} is missing")
+        if str(self.check_id) in data["checked"] or self.check_id in data["checked"]:
+            return "X"
+        elif self.check_id is not None:
+            return self.__text
         return self.__text.replace("<TEXT>", data[self.fill_id])

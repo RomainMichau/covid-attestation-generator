@@ -4,21 +4,15 @@
 
 
 content_template: &text_cell_template
-  align: ''
   h: 0 # height of the cell
   w: 180 # width of the cell
   font_size: 10
-  style: ''
   border: 0
-  fill_id: null
   x: 25
 
 form_template: &form_template
-  align: ''
   font_size: 10
-  style: ''
   border: 0
-  fill_id: null
   x: 35
   h: 5
   w: 160
@@ -26,15 +20,9 @@ form_template: &form_template
 case_template: &case_template
   x: 25
   border: 1
-  fill_id: null
   h: 6
   w: 6
-  style: ''
   font_size: 12
-  text: ''
-  align: ''
-
-
 
 text_content:
 - << : *text_cell_template
@@ -102,6 +90,7 @@ text_content:
 
 - << : *case_template
   y: 85
+  check_id: 1
 
 - << : *form_template
   y: 85
@@ -112,7 +101,7 @@ text_content:
 
 - << : *case_template
   y: 105
-  text: x
+  check_id: 2
 
 - << : *form_template
   y: 105
@@ -123,6 +112,7 @@ text_content:
 
 - << : *case_template
   y: 125
+  check_id: 3
 
 - << : *form_template
   y: 125
@@ -132,6 +122,7 @@ text_content:
 
 - << : *case_template
   y: 140
+  check_id: 4
 
 - << : *form_template
   y: 140
@@ -140,6 +131,7 @@ text_content:
 
 - << : *case_template
   y: 155
+  check_id: 5
 
 - << : *form_template
   y: 155
@@ -149,7 +141,7 @@ text_content:
 
 - << : *case_template
   y: 170
-  text: x
+  check_id: 6
 
 - << : *form_template
   y: 170
@@ -162,6 +154,7 @@ text_content:
 
 - << : *case_template
   y: 200
+  check_id: 7
 
 - << : *form_template
   y: 200
@@ -170,6 +163,7 @@ text_content:
 
 - << : *case_template
   y: 215
+  check_id: 8
 
 - << : *form_template
   y: 215
@@ -178,6 +172,7 @@ text_content:
 
 - << : *case_template
   y: 230
+  check_id: 9
 
 - << : *form_template
   y: 230

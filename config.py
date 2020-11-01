@@ -27,6 +27,7 @@ class PdfConfig:
         self.default_birth_date = data.get("birth_date")
         self.default_place_of_birth = data.get("place_of_birth")
         self.default_sign_place = data.get("sign_place")
+        self.default_reasons = data.get("default_reasons", [2, 6])
 
 
 class ServerConfig:

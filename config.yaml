@@ -26,3 +26,6 @@ pdf_default_value:
   birth_date: 01/01/1970
   place_of_birth: le chesnay
   sign_place: Paris
+  default_reasons:
+    - 2
+    - 6

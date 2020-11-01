@@ -28,9 +28,12 @@ class AttestationGeneratorServer(object):
             receiver_email = request.args.get("receiver_email")
             sign_date = date.today().strftime("%d/%m/%y")
             sign_time = datetime.now().strftime("%H:%M:%S")
+            checked = request.args.get("reasons")
+            if checked is not None:
+                checked = checked.split(',')
             pdf = self.pdf_service.generate_covid_pdf(sign_date=sign_date, sign_hour=sign_time, firstname=firstname,
                                                       lastname=lastname, place_birth=place_birth, sign_place=sign_place,
-                                                      address=address, birthdate=birthdate)
+                                                      address=address, birthdate=birthdate, checked=checked)
             self.mail.send_mail(attachment=pdf, recipient=receiver_email)
             return "done"
 
