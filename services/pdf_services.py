@@ -76,4 +76,4 @@ class TextContent:
             return "X"
         elif self.check_id is not None:
             return self.__text
-        return self.__text.replace("<TEXT>", data[self.fill_id])
+        return self.__text.replace("<TEXT>", data[self.fill_id]).encode('latin-1', 'replace').decode('latin-1')
