@@ -41,7 +41,7 @@ class CovidConfig:
         conf_file = os.getenv("COVID_ATTEST_CONF_FILE", "config.yaml")
         conf_file = os.path.join(ROOT_DIR, conf_file)
         logging.info(f'Reading config from file {conf_file}')
-        with open(conf_file) as yaml_file:
+        with open(conf_file, 'rt', encoding="utf8") as yaml_file:
             data = yaml.safe_load(yaml_file)
             self.__server_config = ServerConfig(data["server_config"])
             self.__mail_config = MailConfig(data["mail_config"])
