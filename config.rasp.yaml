@@ -1,0 +1,24 @@
+---
+# Config used for raspberry
+# Each input pin is linked with attestation content
+rasp_config:
+ - pin_id: 11
+   firstname: John
+   lastname: Doe
+   address: 1 avenue des champs-élysées, 75015, Paris
+   birth_date: 01/01/1970
+   place_of_birth: le chesnay
+   sign_place: Paris
+   default_reasons:
+     - 2
+     - 6
+ - pin_id: 12
+   firstname: John
+   lastname: Doe
+   address: 1 avenue des champs-élysées, 75015, Paris
+   birth_date: 01/01/1970
+   place_of_birth: le chesnay
+   sign_place: Paris
+   default_reasons:
+     - 2
+     - 6

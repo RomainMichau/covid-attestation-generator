@@ -6,7 +6,7 @@ from datetime import date, datetime
 from config import CovidConfig, ServerConfig
 from services.mail import MailService
 from services.pdf_services import PdfService
-
+from rasp_config import RaspConfig
 logging.basicConfig(level=logging.INFO)
 
 
@@ -42,6 +42,7 @@ class AttestationGeneratorServer(object):
 
 if __name__ == '__main__':
     conf = CovidConfig()
+    rasp_config = RaspConfig()
     mailService = MailService(conf.get_mail_conf())
     pdfService = PdfService(conf.get_pdf_config())
     attestation = AttestationGeneratorServer(mailService, conf.get_server_conf(), pdfService)
